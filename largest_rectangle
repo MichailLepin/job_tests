@@ -1,0 +1,29 @@
+def largest_rectangle(n, m, a, b):
+    var1 = 0
+    list_out = []
+    a.sort()
+    b.sort()
+    for i in a:
+        for i_2 in b:
+            if i == i_2:
+                list_out.append(i)
+    if len(list_out) < 2:
+        return 0
+    var0 = list_out[0]
+    for j in list_out:
+        if j - var0 > var1:
+            var1 = j - var0
+        if j < var0:
+            var0 = j
+    if var1 == 0:
+        return 0
+    return var1
+t = 1
+for _ in range(t):
+    n, m = map(int, input().split())
+
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    out = largest_rectangle(n, m, a, b) 
+    print(out)
