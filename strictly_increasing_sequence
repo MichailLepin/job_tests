@@ -1,0 +1,17 @@
+def solve(n, a):
+    a.reverse()
+    out_list = []
+    local = 0
+    for value in a:
+        if value >= local:
+            out_list.append(value - (value - local + 1))
+        local = value
+    return str(all(i < j for i, j in zip(out_list, out_list[1:])))
+
+
+t = int(input())
+for i in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    out = solve(n, a)
+    print(out)
